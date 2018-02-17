@@ -1,0 +1,8 @@
+*.sw?
+*.bkp
+/out/
+*.aux
+*.log
+*.out
+*.toc
+.DS_Store

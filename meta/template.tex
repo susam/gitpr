@@ -1,0 +1,38 @@
+\documentclass{article}
+
+% Set paper size to A4 (default is US Letter).
+\usepackage[a4paper]{geometry}
+
+% To use unicode characters in verbatim environment.
+\usepackage{lmodern}
+\usepackage{upquote}
+
+% To render unicode characters correctly.
+\usepackage[utf8]{inputenc}
+
+% Do not indent paragraphs and insert blank space between paragraphs.
+\usepackage{parskip}
+
+% Remove ugly border around links and color links blue. Color internal
+% links blue instead of red.
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+
+% Use current font instead of monospace font for \url commands.
+\urlstyle{same}
+
+% To use \includegraphics command to render CC BY license logo.
+\usepackage{graphicx}
+
+% Author.
+\author{Susam Pal}
+
+% Omit date in title.
+\date{}
+
+% Pandoc generates \tightlist command for itemize environment. Change
+% \tightlist to no-operation.
+\def\tightlist{}
+
+\begin{document}
+$body$
+\end{document}
