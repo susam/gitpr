@@ -1,4 +1,4 @@
-output:
+build:
 	# Create output directory.
 	mkdir -p out
 
@@ -18,7 +18,8 @@ output:
 	# Post-process LaTeX output to:
 	#
 	#   - Reduce header levels.
-	#   - Use original Creative Commons license logo.
+	#   - Prevent splitting of verbatim block between pages.
+	#   - Use PNG format Creative Commons license logo.
 	#   - Reduce size of Creative Commons license logo.
 	sed -e 's/\\section/\\title/' \
 	    -e 's/\\subsection/\\section/' \
@@ -57,3 +58,9 @@ install-tools-mac:
 clean:
 	rm -rf out
 	rm -f *.aux *.log *.out *.toc
+
+view:
+	-xdg-open out/gitpr.pdf || open out/gitpr.pdf
+	-less out/gitpr.txt
+
+test: clean build view
