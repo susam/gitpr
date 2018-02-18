@@ -112,6 +112,12 @@ reference.
     # Go to your fork on GitHub, switch to the topic branch, and
     # click *Compare & pull request*.
 
+Note: If you use 2FA with Github, you may see the error
+"remote: Invalid username or password" when pushing to origin. In this case,
+generate a [Personal Access Token][PAT] and re-attempt
+the command with the Personal Access Token in lieu of your password.
+
+
     # Keep your fork's main development branch updated with upstream's.
     git fetch upstream
     git checkout master
@@ -568,6 +574,7 @@ express, implied, statutory, or other. See the
 
 [CCBY]: http://creativecommons.org/licenses/by/4.0/
 [CCBYLC]: https://creativecommons.org/licenses/by/4.0/legalcode
+[PAT]: https://github.com/settings/tokens
 
 
 Support
