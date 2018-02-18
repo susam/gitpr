@@ -4,11 +4,12 @@ output:
 
 	# Pre-process Markdown file to:
 	#
-	#   - Wrap version in \date{}.
-	#   - Expose embedded LaTeX code.
-	sed -e 's/^Version.*/\\date{&}/' \
+	#   - Wrap version/date in \date{}.
+	#   - Uncomment embedded LaTeX code.
+	#   - Delete lines meant for README.md only.
+	sed -e 's/^<!-- \(Version.*\) -->/\\date{\1}/' \
 	    -e 's/<!-- :: *\(.*\) -->/\1/g' \
-	    -e 's/<!-- :: *\(.*\) -->/\1/g' \
+	    -e '/<!-- x -->/d' \
 	    README.md > out/gitpr.md
 
 	# Convert Markdown to LaTeX.
@@ -33,12 +34,20 @@ output:
 	pdflatex out/gitpr.tex
 	mv gitpr.pdf out/
 
-	# Generate TXT.
-	sed -e '/<!--/d' \
+	# Generate TXT:
+	#
+	#   - Uncomment version/date.
+	#   - Delete embedded LaTeX code.
+	#   - Delete images.
+	#   - Use (c) as copyright symbol.
+	#   - Delete lines meant for README.md only.
+	sed -e 's/^<!-- \(Version.*\) -->/\1/' \
+	    -e '/<!-- :: *\(.*\) -->/d' \
 	    -e '/SHIELD_/d' \
 	    -e '/DOWNLOAD_/d' \
 	    -e '/CC BY 4.0 Logo/d' \
 	    -e 's/&copy;/(c)/' \
+	    -e '/<!-- x -->/d' \
 	    README.md > out/gitpr.txt
 
 install-tools-mac:

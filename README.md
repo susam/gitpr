@@ -11,7 +11,7 @@ Fork and Pull Request Workflow
 [DOWNLOAD_PDF]: https://github.com/susam/gitpr/releases/download/0.1.0/gitpr.pdf
 [DOWNLOAD_TXT]: https://github.com/susam/gitpr/releases/download/0.1.0/gitpr.txt
 <!-- :: \fi -->
-Version 0.1.0 (2018-02-17)
+<!-- Version 0.1.0 (2018-02-17) -->
 <!-- :: \maketitle -->
 
 This document describes how developers may contribute pull requests to
@@ -19,6 +19,9 @@ an upstream repository and how upstream owners may merge pull requests
 from contributors according to the very popular fork and pull request
 workflow followed in many projects on GitHub.
 
+The download buttons above download version 0.1.0 <!-- x -->
+(the latest stable release) of this document. <!-- x -->
+<!-- x -->
 The most recent version of this document is available at
 <https://github.com/susam/gitpr>.
 
