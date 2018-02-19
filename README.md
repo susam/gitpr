@@ -11,7 +11,7 @@ Fork and Pull Request Workflow
 [DOWNLOAD_PDF]: https://github.com/susam/gitpr/releases/download/0.1.0/gitpr.pdf
 [DOWNLOAD_TXT]: https://github.com/susam/gitpr/releases/download/0.1.0/gitpr.txt
 <!-- :: \fi -->
-<!-- Version 0.1.0 (2018-02-17) -->
+<!-- Version 0.1.1-draft (2018-02-19) -->
 <!-- :: \maketitle -->
 
 This document describes how developers may contribute pull requests to
@@ -60,12 +60,24 @@ document to keep the text general. However in the command examples and
 ASCII-diagrams, we use `master` as an example of the main development
 branch.
 
-Contributors to a project usually develop their contribution in a
-feature-specific or bug-specific branch. Usually, such a branch has an
-appropriate and meaningful name as per the feature of bug-fix to be
-developed. We refer to such a branch as *topic branch* in the text and
-`TOPIC-BRANCH` in the command examples and ASCII-diagrams in this
-document.
+We use the following placeholders in the command examples and
+ASCII-diagrams in this document:
+
+  - `GITHUB`: [`github.com`](https://github.com/) or domain
+    name/hostname of your private GitHub Enterprise system.
+  - `USER` or `CONTRIBUTOR`: The user that forks an upstream repository,
+    creates pull requests, and sends them to the upstream repository.
+  - `UPSTREAM-OWNER`: Owner of the upstream repository. This is the name
+    of the user or organization that merges pull requests into the
+    upstream repository.
+  - `REPO`: Repository name.
+  - `FILES`: One or more filenames to be staged for a commit.
+  - `TOPIC-BRANCH`: Feature-specific or bug-specific branch where a
+    contributor develops her or his contribution. This is referred to as
+    *topic branch* in the text.
+
+These placeholders should be substituted with appropriate values while
+executing the commands.
 
 Beginners to this workflow should always remember that a Git branch is
 not a container of commits, but rather a lightweight moving pointer that
