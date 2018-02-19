@@ -113,9 +113,9 @@ reference.
     # CREATE PULL REQUEST
     # ===================
     # Fork upstream and clone your fork.
-    git clone https://GITHUB/USER/REPO.git
+    git clone https://github.com/USER/REPO.git
     cd REPO
-    git remote add upstream https://GITHUB/UPSTREAM-OWNER/REPO.git
+    git remote add upstream https://github.com/UPSTREAM-OWNER/REPO.git
     git remote -v
 
     # Work on pull request in a new topic branch.
@@ -126,6 +126,12 @@ reference.
 
     # Go to your fork on GitHub, switch to the topic branch, and
     # click *Compare & pull request*.
+
+Note: If you use 2FA with Github, you may see the error
+"remote: Invalid username or password" when pushing to origin. In this case,
+generate a [Personal Access Token][PAT] and re-attempt
+the command with the Personal Access Token in lieu of your password.
+
 
     # Keep your fork's main development branch updated with upstream's.
     git fetch upstream
@@ -150,12 +156,12 @@ reference.
     # MERGE PULL REQUEST (WITHOUT MERGE COMMIT)
     # =========================================
     # Clone upstream repo.
-    git clone https://GITHUB/UPSTREAM-OWNER/REPO.git
+    git clone https://github.com/UPSTREAM-OWNER/REPO.git
     cd REPO
 
     # Pull changes in pull request into a temporary branch.
     git checkout -b pr
-    git pull https://GITHUB/CONTRIBUTOR/REPO.git TOPIC-BRANCH
+    git pull https://github.com/CONTRIBUTOR/REPO.git TOPIC-BRANCH
 
     # Rebase pull request commits on the main development branch.
     git rebase master pr
@@ -172,12 +178,12 @@ reference.
     # MERGE PULL REQUEST (WITH MERGE COMMIT)
     # ======================================
     # Clone upstream repo.
-    git clone https://GITHUB/UPSTREAM-OWNER/REPO.git
+    git clone https://github.com/UPSTREAM-OWNER/REPO.git
     cd REPO
 
     # Pull changes in pull request into a temporary branch.
     git checkout -b pr
-    git pull https://GITHUB/CONTRIBUTOR/REPO.git TOPIC-BRANCH
+    git pull https://github.com/CONTRIBUTOR/REPO.git TOPIC-BRANCH
 
     # Merge pull request and delete temporary branch
     git checkout master
@@ -206,9 +212,9 @@ Then clone your fork from your personal GitHub user account to your
 local system and set the upstream repository URL as a remote named
 `upstream`.
 
-    git clone https://GITHUB/USER/REPO.git
+    git clone https://github.com/USER/REPO.git
     cd REPO
-    git remote add upstream https://GITHUB/UPSTREAM-OWNER/REPO.git
+    git remote add upstream https://github.com/UPSTREAM-OWNER/REPO.git
     git remote -v
 
 The remote named `upstream` points to the upstream repository.
@@ -405,14 +411,14 @@ commit history.
 ### Without Merge Commit
 Clone the upstream repository to your local system.
 
-    git clone https://GITHUB/UPSTREAM-OWNER/REPO.git
+    git clone https://github.com/UPSTREAM-OWNER/REPO.git
     cd REPO
 
 Create a temporary branch (`pr` for example) to pull the contribution
 (pull request) from the CONTRIBUTOR's branch in it:
 
     git checkout -b pr
-    git pull https://GITHUB/CONTRIBUTOR/REPO.git TOPIC-BRANCH
+    git pull https://github.com/CONTRIBUTOR/REPO.git TOPIC-BRANCH
 
 If the main development branch has diverged from the branch in the pull
 request, move the commits in the pull request and place them on top of
@@ -467,14 +473,14 @@ commit in the pull request branch.
 ### With Merge Commit
 Clone the upstream repository to your local system.
 
-    git clone https://GITHUB/UPSTREAM-OWNER/REPO.git
+    git clone https://github.com/UPSTREAM-OWNER/REPO.git
     cd REPO
 
 Create a temporary branch (`pr` for example) to pull the contribution
 (pull request) from the CONTRIBUTOR's branch in it:
 
     git checkout -b pr
-    git pull https://GITHUB/CONTRIBUTOR/REPO.git TOPIC-BRANCH
+    git pull https://github.com/CONTRIBUTOR/REPO.git TOPIC-BRANCH
 
 Squash multiple commits in the pull request into one commit (if
 desired). See [*Squash Commits*](#squash-commits) section above for more
@@ -583,6 +589,7 @@ express, implied, statutory, or other. See the
 
 [CCBY]: http://creativecommons.org/licenses/by/4.0/
 [CCBYLC]: https://creativecommons.org/licenses/by/4.0/legalcode
+[PAT]: https://github.com/settings/tokens
 
 
 Support
