@@ -1,4 +1,4 @@
-build:
+build: set-date
 	# Create output directory.
 	mkdir -p out
 
@@ -62,5 +62,10 @@ clean:
 view:
 	-xdg-open out/gitpr.pdf || open out/gitpr.pdf
 	-less out/gitpr.txt
+
+set-date:
+	sed "/<!-- Version/ s/(\(.*\))/($$(date +'%Y-%m-%d'))/" \
+	    README.md > README.tmp
+	mv README.tmp README.md
 
 test: clean build view
