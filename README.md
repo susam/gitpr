@@ -547,6 +547,19 @@ convenient alias for this option.
     git dc
 
 
+### Verbose Branches
+The following commands provides aliases to list branches with verbose
+information. The second alias includes remote branches too in the
+output.
+
+    # Define aliases
+    git config --global alias.br "branch -vv"
+    git config --global alias.brr "branch -vva"
+
+    # Use aliases
+    git br
+    git brr
+
 ### Find Merge Base
 Find a common ancestor of two branches with this command. It helps to
 find the commit after which two branches began diverging.
