@@ -213,8 +213,8 @@ local system and set the upstream repository URL as a remote named
     git remote add upstream https://GITHUB/UPSTREAM-OWNER/REPO.git
     git remote -v
 
-The remote named `upstream` points to the upstream repository.
-The remote named `origin` points to your fork.
+Now the remote named `upstream` points to the upstream repository and
+the remote named `origin` points to your fork.
 
 In the fork and pull request workflow, a contributor must never push
 commits to `upstream`. A contributor must only push commits to `origin`.
@@ -241,9 +241,8 @@ Wait for an upstream developer to review and merge your pull request.
 
 If there are review comments to be addressed, continue working on your
 branch, commiting, optionally squashing and rebasing them, and pushing
-them to the topic branch of `origin` (your fork). Any further commits
-pushed to the topic branch automatically become part of the existing
-pull request.
+them to the topic branch of `origin` (your fork). Any changes to the
+topic branch automatically become available in the pull request.
 
 In the fork and pull request workflow, a contributor should never commit
 anything to the main development branch of personal fork. This makes it
@@ -293,21 +292,26 @@ commit in the upstream's main development branch.
                  \
                   H---I---J (upstream/master, master)
 
+After the merge is complete, the upstream's main development branch and
+your main development branch point to the same commit.
 
 ### Squash Commits
 This is an optional step to keep the commit history concise.
 
-If there are review comments to a pull request which need to be
-addressed in a new commit, or if there are minor fixes to be committed
-to an existing pull request, it may result in multiple commits in
-the topic branch.
+After developing the required feature or bug-fix in a topic branch, the
+developer or a reviewer may notice issues in the work that need to be
+addressed before the pull request can be merged into the upstream
+repository. This may lead to multiple new commits in the topic branch
+that should ideally have been part of the first commit that implemented
+that feature or bug-fix.
 
          E---F---G (TOPIC-BRANCH)
         /
     A---B---C---D  (master)
 
-It may be a good idea to squash the multiple commits in the pull request
-into a single commit.
+It may be a good idea to squash such multiple commits in the topic
+branch into a single coherent commit with all changes for the feature or
+bug-fix being developed.
 
          E'       (TOPIC-BRANCH)
         /
@@ -370,8 +374,8 @@ themselves before merging the pull request into upstream.
 
 
 ### Delete Branch
-Once the upstream developer has merged your pull request, you may delete
-the topic branch from your local system as well as from your fork.
+Once the upstream developer merges your pull request, you may delete the
+topic branch from your local system as well as from your fork.
 
     git checkout master
     git branch -D TOPIC-BRANCH
@@ -543,7 +547,7 @@ convenient alias for this option.
     git dc
 
 
-### Verbose Branches
+### Branch Listing
 The following commands provides aliases to list branches with verbose
 information. The second alias includes remote branches too in the
 output.
