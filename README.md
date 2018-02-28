@@ -133,12 +133,14 @@ reference.
     git merge upstream/master
     git push origin master
 
-    # Squash commits, last 3 commits for example (optional).
+    # Squash commits, e.g., last 3 commits in topic branch (optional).
+    git checkout TOPIC-BRANCH
     git rebase -i HEAD~3
     git push -f origin TOPIC-BRANCH
 
     # Rebase topic branch on the main development branch (optional).
-    git rebase master TOPIC-BRANCH
+    git checkout TOPIC-BRANCH
+    git rebase master
 
     # Delete topic branch branch after pull request is merged.
     git checkout master
@@ -157,8 +159,8 @@ reference.
     git checkout -b pr
     git pull https://GITHUB/CONTRIBUTOR/REPO.git TOPIC-BRANCH
 
-    # Rebase pull request commits on the main development branch.
-    git rebase master pr
+    # Rebase pull request on the main development branch.
+    git rebase master
 
     # Merge pull request and delete temporary branch.
     git checkout master
@@ -314,6 +316,7 @@ into a single commit.
 The following example shows how to squash the last 3 commits into a
 single commit and publish the squashed commit to the pull request.
 
+    git checkout TOPIC-BRANCH
     git rebase -i HEAD~3
     git push -f origin TOPIC-BRANCH
 
@@ -358,15 +361,8 @@ extends linearly from the last commit in the main development branch.
 The following command shows how to rebase the topic branch on the main
 development branch.
 
-    git rebase master TOPIC-BRANCH
-
-The above command is a shorthand for these two commands.
-
     git checkout TOPIC-BRANCH
     git rebase master
-
-Therefore, TOPIC-BRANCH will be left as the current branch after this
-step is completed.
 
 Note: Even if the the pull request developer does not rebase commits,
 the upstream developers always have the option to rebase the commits
@@ -419,7 +415,7 @@ request, move the commits in the pull request and place them on top of
 the main development branch, so that the branch in the pull request
 extends linearly from the main development branch.
 
-    git rebase master pr
+    git rebase master
 
 See *[Rebase Commits](#rebase-commits)* section above for more details.
 
