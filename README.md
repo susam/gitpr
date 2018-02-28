@@ -11,7 +11,7 @@ Fork and Pull Request Workflow
 [DOWNLOAD_PDF]: https://github.com/susam/gitpr/releases/download/0.1.0/gitpr.pdf
 [DOWNLOAD_TXT]: https://github.com/susam/gitpr/releases/download/0.1.0/gitpr.txt
 <!-- :: \fi -->
-<!-- Version 0.1.1-draft (2018-02-19) -->
+<!-- Version 0.1.1-draft (2018-02-28) -->
 <!-- :: \maketitle -->
 
 This document describes how developers may contribute pull requests to
@@ -511,27 +511,25 @@ current state of the repository.
 
 
 ### Pretty Logs
-The following commands create various aliases to run `git log` with
-various subsets of {`--pretty`, `--graph`, `--all`} options.
+The following commands create aliases to run `git log` with various subsets of
+{`--pretty`, `--graph`, `--all`} options to display commit logs in a compact
+form, i.e., one line per log.
 
     # Define
-    PRETTY="--pretty=format:'%C(auto)%h %C(magenta)%ad %C(cyan)%an%C(auto)%d %s'
-            --date=short"
-    git config --global alias.logpga "log $PRETTY --graph --all"
-    git config --global alias.logpg "log $PRETTY --graph"
-    git config --global alias.logpa "log $PRETTY --all"
-    git config --global alias.logga "log --graph --all"
-    git config --global alias.logp "log $PRETTY"
-    git config --global alias.logg "log --graph"
-    git config --global alias.loga "log --all"
+    FORMAT="%C(auto)%h %C(magenta)%ad %C(cyan)%an%C(auto)%d %s"
+    PRETTY="--pretty=format:'$FORMAT' --date=short"
+    git config --global alias.lga "log --graph --all $PRETTY"
+    git config --global alias.lg "log --graph $PRETTY"
+    git config --global alias.la "log --all $PRETTY"
+    git config --global alias.ll "log $PRETTY"
+    git config --global alias.lf "log --pretty=fuller --stat"
 
-    # Use
-    git logpga
-    git logpg
-    git logga
-    git logp
-    git logg
-    git loga
+    # Use aliases
+    git lga
+    git lg
+    git la
+    git ll
+    git lf
 
 
 ### Staged Changes
@@ -540,11 +538,13 @@ is necessary to use the `--cached` option with `git diff` to see the
 changes staged for the next commit. The following command creates a
 convenient alias for this option.
 
-    # Define alias
+    # Define aliases
     git config --global alias.diffc "diff --cached"
+    git config --global alias.dc "diff --cached"
 
-    # Use alias
+    # Use aliases
     git diffc
+    git dc
 
 
 ### Find Merge Base
