@@ -24,8 +24,8 @@ build: set-date
 	sed -e 's/\\section/\\title/' \
 	    -e 's/\\subsection/\\section/' \
 	    -e 's/\\subsubsection/\\subsection/' \
-	    -e 's/\\begin{verbatim}/\\begin{minipage}{\\linewidth}&/' \
-	    -e 's/\\end{verbatim}/&\\end{minipage}/' \
+	    -e 's/\\begin{verbatim}/\\vspace{5pt}\\begin{minipage}{\\linewidth}&/' \
+	    -e 's/\\end{verbatim}/&\\end{minipage}\\vspace{5pt}/' \
 	    -e 's/ccby\.svg/ccby.png/' \
 	    -e 's/\\includegraphics/&[scale=0.75]/' \
 	    out/gitpr.tmp.tex > out/gitpr.tex
