@@ -29,6 +29,7 @@ Release
 Perform the following tasks for every release.
 
   - Update version line in README.md.
+  - Update version in download URLs.
   - Update copyright notice in README.md.
   - Build output documents.
 
