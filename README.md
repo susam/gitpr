@@ -198,7 +198,7 @@ reference.
     git checkout -b pr
     git pull https://GITHUB/CONTRIBUTOR/REPO.git TOPIC-BRANCH
 
-    # Merge pull request and delete temporary branch
+    # Merge pull request and delete temporary branch.
     git checkout master
     git merge --no-ff pr
     git branch -d pr
@@ -404,7 +404,7 @@ repository and merge pull requests from contributors to it.
 There are two popular methods to merge commits: one that does not
 introduce an additional merge commit, and another that does.
 
-Both method are perfectly acceptable. Both methods are discussed below.
+Both methods are perfectly acceptable. Both methods are discussed below.
 
 Which method you choose depends on whether you want to maintain a
 concise commit history consisting only of development commits or if you
@@ -418,8 +418,14 @@ Clone the upstream repository to your local system.
     git clone https://GITHUB/UPSTREAM-OWNER/REPO.git
     cd REPO
 
+If the repository was already cloned to the local system earlier, then
+ensure that local main development branch is up to date with that in the
+upstream repository.
+
+    git pull
+
 Create a temporary branch (`pr` for example) to pull the contribution
-(pull request) from the CONTRIBUTOR's branch in it:
+(pull request) from the CONTRIBUTOR's branch in it.
 
     git checkout -b pr
     git pull https://GITHUB/CONTRIBUTOR/REPO.git TOPIC-BRANCH
@@ -506,8 +512,14 @@ Clone the upstream repository to your local system.
     git clone https://GITHUB/UPSTREAM-OWNER/REPO.git
     cd REPO
 
+If the repository was already cloned to the local system earlier, then
+ensure that local main development branch is up to date with that in the
+upstream repository.
+
+    git pull
+
 Create a temporary branch (`pr` for example) to pull the contribution
-(pull request) from the CONTRIBUTOR's branch in it:
+(pull request) from the CONTRIBUTOR's branch in it.
 
     git checkout -b pr
     git pull https://GITHUB/CONTRIBUTOR/REPO.git TOPIC-BRANCH
