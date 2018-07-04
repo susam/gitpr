@@ -11,7 +11,7 @@ Fork and Pull Request Workflow
 [DOWNLOAD_PDF]: https://github.com/susam/gitpr/releases/download/0.2.0/gitpr.pdf
 [DOWNLOAD_TXT]: https://github.com/susam/gitpr/releases/download/0.2.0/gitpr.txt
 <!-- :: \fi -->
-<!-- Version 0.2.0 (2018-03-23) -->
+<!-- Version 0.3.0-dev (2018-07-04) -->
 <!-- :: \maketitle -->
 
 This document describes how developers may contribute pull requests to
@@ -141,6 +141,7 @@ reference.
     # Rebase topic branch on the main development branch (optional).
     git checkout TOPIC-BRANCH
     git rebase master
+    git push -f origin TOPIC-BRANCH
 
     # Delete topic branch branch after pull request is merged.
     git checkout master
@@ -159,8 +160,24 @@ reference.
     git checkout -b pr
     git pull https://GITHUB/CONTRIBUTOR/REPO.git TOPIC-BRANCH
 
-    # Rebase pull request on the main development branch.
-    git rebase master
+    # If the above command creates a new merge commit, then choose one
+    # of the following three options to get rid of it:
+    #
+    #   - Delete the temporary branch. Then request the contributor to
+    #     rebase the topic branch on the main development branch. After
+    #     the contributor has rebased the topic branch, start over.
+    #     (Commands: git checkout master; git branch -D pr)
+    #
+    #   - Go to the pull request page on GitHub, click on the dropdown
+    #     menu next to 'Merge pull request', select 'Rebase and merge',
+    #     and click 'Rebase and merge'.
+    #
+    #   - Rebase the topic branch on the main development branch. Then
+    #     proceed with the commands below. Finally close the pull
+    #     request on GitHub manually. (Command: git rebase master)
+    #
+    # If the above command does not create a new merge commit, proceed
+    # with the commands below.
 
     # Merge pull request and delete temporary branch.
     git checkout master
@@ -339,10 +356,6 @@ is safe to overwrite the commit history because the commits are being
 pushed to a personal branch in a personal fork without affecting the
 upstream repository.
 
-Note: Even if the pull request developer does not squash commits, the
-upstream developers always have the option to squash the commits
-themselves before merging the pull request into the upstream repository.
-
 
 ### Rebase Commits
 This is an optional step to keep the commit history as linear as possible.
@@ -367,10 +380,7 @@ development branch.
 
     git checkout TOPIC-BRANCH
     git rebase master
-
-Note: Even if the the pull request developer does not rebase commits,
-the upstream developers always have the option to rebase the commits
-themselves before merging the pull request into upstream.
+    git push -f origin TOPIC-BRANCH
 
 
 ### Delete Branch
@@ -415,17 +425,43 @@ Create a temporary branch (`pr` for example) to pull the contribution
     git pull https://GITHUB/CONTRIBUTOR/REPO.git TOPIC-BRANCH
 
 If the main development branch has diverged from the branch in the pull
-request, move the commits in the pull request and place them on top of
-the main development branch, so that the branch in the pull request
-extends linearly from the main development branch.
+request, the above command creates a new merge commit to merge the pull
+request into the temporary branch. There are three possible options to
+get rid of this additional merge commit:
 
-    git rebase master
+  - Delete the temporary branch.
 
-See *[Rebase Commits](#rebase-commits)* section above for more details.
+        git checkout master
+        git branch -D pr
 
-Squash multiple commits in the pull request into fewer commits (if
-desired). See *[Squash Commits](#squash-commits)* section above for more
-details.
+    Then request the contributor to rebase the topic branch on the main
+    development branch. See the *[Rebase Commits](#rebase-commits)*
+    section for more details. After the contributor has rebased the
+    topic branch on the main development branch, start over.
+
+  - Go to the pull request page on GitHub, click on the dropdown menu
+    next to the *Merge pull request* button, select *Rebase and merge*,
+    and click *Rebase and merge*.
+
+  - Rebase the pull request on the main development branch as explained
+    in the *[Rebase Commits](#rebase-commits)* section above.
+
+    This is the least preferred option due to a caveat. The rebase
+    operation rewrites the commit history of changes in the pull
+    request. As a result, it modifies the commit hashes of the changes
+    in the pull request.
+
+    Due to this caveat, when the merged pull request is pushed to the
+    upstream repository, GitHub does not close the pull request
+    automatically. It has to be closed manually. The status of the pull
+    request would appear as *Closed* on GitHub. It would not appear as
+    *Merged*. GitHub considers a pull request to be merged if and only
+    if the commits with commit hashes *it* found in the pull request are
+    merged into the base branch.
+
+Request the contributor to squash multiple commits in the pull request
+into fewer commits (if desired). See the *[Squash
+Commits](#squash-commits)* section above for more details.
 
 After sufficient testing, merge the commits in the pull request into the
 main development branch and remove the pull request branch.
