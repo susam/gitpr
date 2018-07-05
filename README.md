@@ -11,7 +11,7 @@ Fork and Pull Request Workflow
 [DOWNLOAD_PDF]: https://github.com/susam/gitpr/releases/download/0.2.0/gitpr.pdf
 [DOWNLOAD_TXT]: https://github.com/susam/gitpr/releases/download/0.2.0/gitpr.txt
 <!-- :: \fi -->
-<!-- Version 0.3.0-dev (2018-07-04) -->
+<!-- Version 0.3.0-dev (2018-07-05) -->
 <!-- :: \maketitle -->
 
 This document describes how developers may contribute pull requests to
@@ -55,7 +55,7 @@ Every project has a main development branch where the developers push
 commits on a day-to-day basis. Usually, the main development branch is
 `master` but some projects choose to have `develop` or `trunk` or
 another branch for day-to-day development activities. We refer to this
-main development branch as *main development branch* throughout this
+main development branch as the *main development branch* throughout this
 document to keep the text general. However in the command examples and
 ASCII-diagrams, we use `master` as an example of the main development
 branch.
@@ -74,10 +74,10 @@ ASCII-diagrams in this document:
   - `FILES`: One or more filenames to be staged for a commit.
   - `TOPIC-BRANCH`: Feature-specific or bug-specific branch where a
     contributor develops her or his contribution. This is referred to as
-    *topic branch* in the text.
+    the *topic branch* in the text.
 
 These placeholders should be substituted with appropriate values while
-executing the commands.
+executing the commands presented in this document.
 
 Beginners to this workflow should always remember that a Git branch is
 not a container of commits, but rather a lightweight moving pointer that
@@ -109,6 +109,10 @@ Quick Reference
 Here is a brief summary of all the commands used to create and merge
 pull requests in this document. This section serves as a quick
 reference.
+
+The next two sections, *[Create Pull Request](#create-pull-request)*
+and *[Merge Pull Request](#merge-pull-request)*, elaborate these
+commands in detail.
 
     # CREATE PULL REQUEST
     # ===================
@@ -205,10 +209,6 @@ reference.
 
     # Push the updated main development branch to upstream repo.
     git push origin master
-
-The next two sections, *[Create Pull Request](#create-pull-request)*
-and *[Merge Pull Request](#merge-pull-request)*, elaborate these
-commands in detail.
 
 <!-- :: \pagebreak -->
 
@@ -312,6 +312,8 @@ commit in the upstream's main development branch.
 After the merge is complete, the upstream's main development branch and
 your main development branch point to the same commit.
 
+<!-- :: \pagebreak -->
+
 ### Squash Commits
 This is an optional step to keep the commit history concise.
 
@@ -356,6 +358,7 @@ is safe to overwrite the commit history because the commits are being
 pushed to a personal branch in a personal fork without affecting the
 upstream repository.
 
+<!-- :: \pagebreak -->
 
 ### Rebase Commits
 This is an optional step to keep the commit history as linear as possible.
@@ -506,6 +509,7 @@ commit in the pull request branch.
                  /
     A---B---C---D
 
+<!-- :: \pagebreak -->
 
 ### With Merge Commit
 Clone the upstream repository to your local system.
@@ -554,9 +558,7 @@ merge is possible.
 Nifty Commands
 --------------
 This is a bonus section that describes a few aliases and commands that
-may be useful during day-to-day development activities. When git merges
-crash and burn, these aliases and commands may be useful to check the
-current state of the repository.
+may be useful during day-to-day development activities.
 
 
 ### Pretty Logs
@@ -584,8 +586,8 @@ form, i.e., one line per log.
 ### Staged Changes
 While `git diff` shows the unstaged changes in the working directory, it
 is necessary to use the `--cached` option with `git diff` to see the
-changes staged for the next commit. The following command creates a
-convenient alias for this option.
+changes staged for the next commit. The following commands create
+convenient aliases for this option.
 
     # Define aliases
     git config --global alias.diffc "diff --cached"
@@ -595,6 +597,7 @@ convenient alias for this option.
     git diffc
     git dc
 
+<!-- :: \pagebreak -->
 
 ### Branch Listing
 The following commands provides aliases to list branches with verbose
@@ -608,6 +611,7 @@ output.
     # Use aliases
     git br
     git brr
+
 
 ### Find Merge Base
 Find a common ancestor of two branches with this command. It helps to
@@ -624,6 +628,7 @@ operating system, or just open the URL with your web browser.
     xdg-open https://xkcd.com/1597/
     start https://xkcd.com/1597/
 
+<!-- :: \pagebreak -->
 
 License
 -------
