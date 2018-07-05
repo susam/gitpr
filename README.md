@@ -391,8 +391,9 @@ topic branch from your local system as well as from your fork.
     git branch -D TOPIC-BRANCH
     git push -d origin TOPIC-BRANCH
 
-The next section, *[Merge Pull Request]*, explains how an upstream owner
-can merge pull request from contributors into the upstream repository.
+The next section, *[Merge Pull Request](#merge-pull-request)*, explains how an
+upstream owner can merge pull request from contributors into the upstream
+repository.
 
 <!-- :: \pagebreak -->
 
