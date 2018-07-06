@@ -38,6 +38,7 @@ Contents
   * [Amend Last Commit](#amend-last-commit)
   * [Rebase Commits](#rebase-commits)
   * [Squash Commits](#squash-commits)
+  * [Force Push](#force-push)
   * [Delete Branch](#delete-branch)
 * [Merge Pull Request](#merge-pull-request)
   * [Without Merge Commit](#without-merge-commit)
@@ -141,11 +142,12 @@ reference.
     # Rebase topic branch on the main development branch (optional).
     git checkout TOPIC-BRANCH
     git rebase master
-    git push -f origin TOPIC-BRANCH
 
     # Squash commits, e.g., last 3 commits in topic branch (optional).
     git checkout TOPIC-BRANCH
     git rebase -i HEAD~3
+
+    # Force push (optional).
     git push -f origin TOPIC-BRANCH
 
     # Delete topic branch branch after pull request is merged.
@@ -282,6 +284,7 @@ very easy to keep the main development branch of your fork in sync with
 that of the upstream repository. This is explained in the next
 subsection.
 
+<!-- :: \pagebreak -->
 
 ### Keep Your Fork Updated
 As new pull requests get merged into the upstream's main development
@@ -387,15 +390,6 @@ development branch.
 
     git checkout TOPIC-BRANCH
     git rebase master
-    git push -f origin TOPIC-BRANCH
-
-The `-f` (force) option in the `git push` command is necessary only if
-you are pushing to an already existing pull request branch because doing
-so overwrites the history of the branch. Normally, overwriting history
-is strictly discouraged but this is one of the rare scenarios where it
-is safe to overwrite the commit history because the commits are being
-pushed to a personal branch in a personal fork without affecting the
-upstream repository.
 
 
 ### Squash Commits
@@ -425,7 +419,6 @@ single commit and publish the squashed commit to the pull request.
 
     git checkout TOPIC-BRANCH
     git rebase -i HEAD~3
-    git push -f origin TOPIC-BRANCH
 
 This brings up an editor with the last 3 commits ordered from earliest
 to last. Leave the first commit untouched. Replace `pick` with `squash`
@@ -433,6 +426,23 @@ in the next two lines, save, and quit the editor.
 
 This brings up an editor again. Clean up the commit message, save, and
 quit the editor.
+
+
+### Force Push
+The steps in the last three sections overwrite the history of the
+branch. If these steps are performed after the pull request branch has
+already been pushed to GitHub, then it is necessary to use the `-f` or
+`--force` option to push the overwritten history to GitHub.
+
+    git push -f origin TOPIC-BRANCH
+
+The `-f` (force) option in the `git push` command is necessary only if
+you are pushing to an already existing pull request branch because doing
+so overwrites the history of the branch. Normally, overwriting history
+is strictly discouraged but this is one of the rare scenarios where it
+is safe to overwrite the commit history because the commits are being
+pushed to a personal branch in a personal fork without affecting the
+upstream repository.
 
 
 ### Delete Branch
