@@ -35,6 +35,7 @@ Contents
   * [Fork and Clone](#fork-and-clone)
   * [Work on Pull Request](#work-on-pull-request)
   * [Keep Your Fork Updated](#keep-your-fork-updated)
+  * [Amend Last Commit](#amend-last-commit)
   * [Rebase Commits](#rebase-commits)
   * [Squash Commits](#squash-commits)
   * [Delete Branch](#delete-branch)
@@ -132,6 +133,10 @@ reference.
     git checkout master
     git merge upstream/master
     git push origin master
+
+    # Amend last commit (optional).
+    git add FILES
+    git commit --amend
 
     # Rebase topic branch on the main development branch (optional).
     git checkout TOPIC-BRANCH
@@ -266,9 +271,10 @@ Create pull request via GitHub web interface as per the following steps:
 Wait for an upstream developer to review and merge your pull request.
 
 If there are review comments to be addressed, continue working on your
-branch, commiting, optionally squashing and rebasing them, and pushing
-them to the topic branch of `origin` (your fork). Any changes to the
-topic branch automatically become available in the pull request.
+branch, commiting, optionally amending, rebasing, and squashing them,
+and pushing them to the topic branch of `origin` (your fork). Any
+changes to the topic branch automatically become available in the pull
+request.
 
 In the fork and pull request workflow, a contributor should never commit
 anything to the main development branch of personal fork. This makes it
@@ -322,6 +328,41 @@ After the merge is complete, the upstream's main development branch and
 your main development branch point to the same commit.
 
 <!-- :: \pagebreak -->
+
+### Amend Last Commit
+This is an optional step to rework on the last commit.
+
+After commiting some work, one may realize that some files need to be
+modified or the commit message needs to updated.
+
+         E---F     (TOPIC-BRANCH)
+        /
+    A---B---C---D  (master)
+
+Git allows us to pick the last commit, modify the changes made in that
+commit including the commit message, and reapply the changes along with
+modifications as a new commit that replaces the last commit.
+
+         E---F'    (TOPIC-BRANCH)
+        /
+    A---B---C---D  (master)
+
+To do so, first rework on the files and make the necessary changes. Then
+add, remove, move, or rename files to stage them for commiting. Finally,
+amend the last commit. The commit message may be modified when the
+editor comes up to show the commit message.
+
+    git add FILES
+    git commit --amend
+
+Although the above example shows only the `git add` command to add new
+or modified files for commiting, one may amend the last commit by
+removing, moving, and renaming files with the `git rm` and `git mv`
+commands before amending the last commit.
+
+If no files need to be changed but only the commit message needs to be
+updated, run only the command to amend a commit.
+
 
 ### Rebase Commits
 This is an optional step to keep the commit history as linear as possible.
