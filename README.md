@@ -249,9 +249,6 @@ local system and set the upstream repository URL as a remote named
 Now the remote named `upstream` points to the upstream repository and
 the remote named `origin` points to your fork.
 
-In the fork and pull request workflow, a contributor must never push
-commits to `upstream`. A contributor must only push commits to `origin`.
-
 
 ### Work on Pull Request
 Work on a new pull request in a new topic branch and commit to your
@@ -309,11 +306,11 @@ linearly from the last commit in your main development branch, provided
 that there are no additional commits to your main development branch
 that has caused it to diverge.
 
-                  E---F---G (TOPIC-BRANCH)
+                  E---F---G  (TOPIC-BRANCH)
                  /
-    A---B---C---D (master)
+    A---B---C---D  (master)
                  \
-                  H---I---J (upstream/master)
+                  H---I---J  (upstream/master)
 
 
 With such a commit history, when the upstream's main development branch
@@ -321,11 +318,11 @@ is merged into your main development branch, the merge is done by simply
 fast-forwarding the pointer of your main development branch to the last
 commit in the upstream's main development branch.
 
-                  E---F---G (TOPIC-BRANCH)
+                  E---F---G  (TOPIC-BRANCH)
                  /
     A---B---C---D
                  \
-                  H---I---J (upstream/master, master)
+                  H---I---J  (upstream/master, master)
 
 After the merge is complete, the upstream's main development branch and
 your main development branch point to the same commit.
@@ -333,22 +330,21 @@ your main development branch point to the same commit.
 <!-- :: \pagebreak -->
 
 ### Amend Last Commit
-This is an optional step to rework on the last commit.
+This is an optional step to rework on the last commit. After commiting
+some work, one may realize that some files need to be modified or the
+commit message needs to updated.
 
-After commiting some work, one may realize that some files need to be
-modified or the commit message needs to updated.
-
-         E---F     (TOPIC-BRANCH)
+         E---F---G  (TOPIC-BRANCH)
         /
-    A---B---C---D  (master)
+    A---B---C---D   (master)
 
 Git allows us to pick the last commit, modify the changes made in that
 commit including the commit message, and reapply the changes along with
 modifications as a new commit that replaces the last commit.
 
-         E---F'    (TOPIC-BRANCH)
+         E---F---G' (TOPIC-BRANCH)
         /
-    A---B---C---D  (master)
+    A---B---C---D   (master)
 
 To do so, first rework on the files and make the necessary changes. Then
 add, remove, move, or rename files to stage them for commiting. Finally,
@@ -363,8 +359,8 @@ or modified files for commiting, one may amend the last commit by
 removing, moving, and renaming files with the `git rm` and `git mv`
 commands before amending the last commit.
 
-If no files need to be changed but only the commit message needs to be
-updated, run only the command to amend a commit.
+To update only the commit message without changing files, run only `git
+commit --amend`.
 
 
 ### Rebase Commits
@@ -478,9 +474,8 @@ This section is meant for lead developers who own the upstream
 repository and merge pull requests from contributors to it.
 
 There are two popular methods to merge commits: one that does not
-introduce an additional merge commit, and another that does.
-
-Both methods are perfectly acceptable. Both methods are discussed below.
+introduce an additional merge commit, and another that does. Both are
+perfectly acceptable. Both are discussed below.
 
 Which method you choose depends on whether you want to maintain a
 concise commit history consisting only of development commits or if you
@@ -495,8 +490,8 @@ Clone the upstream repository to your local system.
     cd REPO
 
 If the repository was already cloned to the local system earlier, then
-ensure that local main development branch is up-to-date with that in the
-upstream repository.
+ensure that the local main development branch is up-to-date with that in
+the upstream repository.
 
     git checkout master
     git pull
@@ -608,8 +603,8 @@ Clone the upstream repository to your local system.
     cd REPO
 
 If the repository was already cloned to the local system earlier, then
-ensure that local main development branch is up-to-date with that in the
-upstream repository.
+ensure that the local main development branch is up-to-date with that in
+the upstream repository.
 
     git checkout
     git pull
@@ -620,11 +615,10 @@ Create a temporary branch (`pr` for example) to pull the contribution
     git checkout -b pr
     git pull https://GITHUB/CONTRIBUTOR/REPO.git TOPIC-BRANCH
 
-Squash multiple commits in the pull request into one commit (if
-desired). See [*Squash Commits*](#squash-commits) section above for more
-details.
+If the contributor adds new commits to the pull request later, then run
+these commands again to pull the new commits.
 
-After sufficient testing, merge the commits in pull request into the
+After sufficient testing, merge the commits in the pull request into the
 main development branch.
 
     git checkout master
