@@ -11,7 +11,7 @@ Fork and Pull Request Workflow
 [DOWNLOAD_PDF]: https://github.com/susam/gitpr/releases/download/0.2.0/gitpr.pdf
 [DOWNLOAD_TXT]: https://github.com/susam/gitpr/releases/download/0.2.0/gitpr.txt
 <!-- :: \fi -->
-<!-- Version 0.3.0-dev (2018-07-05) -->
+<!-- Version 0.3.0-dev (2018-07-06) -->
 <!-- :: \maketitle -->
 
 This document describes how developers may contribute pull requests to
@@ -110,10 +110,6 @@ Here is a brief summary of all the commands used to create and merge
 pull requests in this document. This section serves as a quick
 reference.
 
-The next two sections, *[Create Pull Request](#create-pull-request)*
-and *[Merge Pull Request](#merge-pull-request)*, elaborate these
-commands in detail.
-
     # CREATE PULL REQUEST
     # ===================
     # Fork upstream and clone your fork.
@@ -160,6 +156,10 @@ commands in detail.
     git clone https://GITHUB/UPSTREAM-OWNER/REPO.git
     cd REPO
 
+    # Keep the local main development branch up-to-date.
+    git checkout master
+    git pull
+
     # Pull changes in pull request into a temporary branch.
     git checkout -b pr
     git pull https://GITHUB/CONTRIBUTOR/REPO.git TOPIC-BRANCH
@@ -191,12 +191,17 @@ commands in detail.
     # Push the updated main development branch to upstream repo.
     git push origin master
 
+<!-- :: \pagebreak -->
 
     # MERGE PULL REQUEST (WITH MERGE COMMIT)
     # ======================================
     # Clone upstream repo.
     git clone https://GITHUB/UPSTREAM-OWNER/REPO.git
     cd REPO
+
+    # Keep the local main development branch up-to-date.
+    git checkout master
+    git pull
 
     # Pull changes in pull request into a temporary branch.
     git checkout -b pr
@@ -209,6 +214,10 @@ commands in detail.
 
     # Push the updated main development branch to upstream repo.
     git push origin master
+
+The next two sections, *[Create Pull Request](#create-pull-request)*
+and *[Merge Pull Request](#merge-pull-request)*, elaborate these
+commands in detail.
 
 <!-- :: \pagebreak -->
 
@@ -423,9 +432,10 @@ Clone the upstream repository to your local system.
     cd REPO
 
 If the repository was already cloned to the local system earlier, then
-ensure that local main development branch is up to date with that in the
+ensure that local main development branch is up-to-date with that in the
 upstream repository.
 
+    git checkout master
     git pull
 
 Create a temporary branch (`pr` for example) to pull the contribution
@@ -518,9 +528,10 @@ Clone the upstream repository to your local system.
     cd REPO
 
 If the repository was already cloned to the local system earlier, then
-ensure that local main development branch is up to date with that in the
+ensure that local main development branch is up-to-date with that in the
 upstream repository.
 
+    git checkout
     git pull
 
 Create a temporary branch (`pr` for example) to pull the contribution
