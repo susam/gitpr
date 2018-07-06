@@ -35,8 +35,8 @@ Contents
   * [Fork and Clone](#fork-and-clone)
   * [Work on Pull Request](#work-on-pull-request)
   * [Keep Your Fork Updated](#keep-your-fork-updated)
-  * [Squash Commits](#squash-commits)
   * [Rebase Commits](#rebase-commits)
+  * [Squash Commits](#squash-commits)
   * [Delete Branch](#delete-branch)
 * [Merge Pull Request](#merge-pull-request)
   * [Without Merge Commit](#without-merge-commit)
@@ -133,14 +133,14 @@ reference.
     git merge upstream/master
     git push origin master
 
-    # Squash commits, e.g., last 3 commits in topic branch (optional).
-    git checkout TOPIC-BRANCH
-    git rebase -i HEAD~3
-    git push -f origin TOPIC-BRANCH
-
     # Rebase topic branch on the main development branch (optional).
     git checkout TOPIC-BRANCH
     git rebase master
+    git push -f origin TOPIC-BRANCH
+
+    # Squash commits, e.g., last 3 commits in topic branch (optional).
+    git checkout TOPIC-BRANCH
+    git rebase -i HEAD~3
     git push -f origin TOPIC-BRANCH
 
     # Delete topic branch branch after pull request is merged.
@@ -323,6 +323,40 @@ your main development branch point to the same commit.
 
 <!-- :: \pagebreak -->
 
+### Rebase Commits
+This is an optional step to keep the commit history as linear as possible.
+
+The main development branch may have diverged since the topic branch was
+created.
+
+         E---F---G (TOPIC-BRANCH)
+        /
+    A---B---C---D  (master)
+
+It may be a good idea to move the commits in the topic branch and place
+them on top of the main development branch, so that the topic branch
+extends linearly from the last commit in the main development branch.
+
+                  E'---F'---G' (TOPIC-BRANCH)
+                 /
+    A---B---C---D  (master)
+
+The following command shows how to rebase the topic branch on the main
+development branch.
+
+    git checkout TOPIC-BRANCH
+    git rebase master
+    git push -f origin TOPIC-BRANCH
+
+The `-f` (force) option in the `git push` command is necessary only if
+you are pushing to an already existing pull request branch because doing
+so overwrites the history of the branch. Normally, overwriting history
+is strictly discouraged but this is one of the rare scenarios where it
+is safe to overwrite the commit history because the commits are being
+pushed to a personal branch in a personal fork without affecting the
+upstream repository.
+
+
 ### Squash Commits
 This is an optional step to keep the commit history concise.
 
@@ -358,41 +392,6 @@ in the next two lines, save, and quit the editor.
 
 This brings up an editor again. Clean up the commit message, save, and
 quit the editor.
-
-The `-f` (force) option in the `git push` command is necessary only if
-you are pushing to an already existing pull request branch because doing
-so overwrites the history of the branch. Normally, overwriting history
-is strictly discouraged but this is one of the rare scenarios where it
-is safe to overwrite the commit history because the commits are being
-pushed to a personal branch in a personal fork without affecting the
-upstream repository.
-
-<!-- :: \pagebreak -->
-
-### Rebase Commits
-This is an optional step to keep the commit history as linear as possible.
-
-The main development branch may have diverged since the topic branch was
-created.
-
-         E---F---G (TOPIC-BRANCH)
-        /
-    A---B---C---D  (master)
-
-It may be a good idea to move the commits in the topic branch and place
-them on top of the main development branch, so that the topic branch
-extends linearly from the last commit in the main development branch.
-
-                  E'---F'---G' (TOPIC-BRANCH)
-                 /
-    A---B---C---D  (master)
-
-The following command shows how to rebase the topic branch on the main
-development branch.
-
-    git checkout TOPIC-BRANCH
-    git rebase master
-    git push -f origin TOPIC-BRANCH
 
 
 ### Delete Branch
