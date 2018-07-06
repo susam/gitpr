@@ -720,6 +720,21 @@ find the commit after which two branches began diverging.
     git merge-base upstream/master TOPIC-BRANCH
 
 
+### Add Changes Interactively
+Sometimes when you are in the zone, you may make large sweeping changes
+to a file. However it is a good practice to create separate and small
+commits for separate concerns. To select some changes in a file while
+ignoring other changes in the same file for the next commit, stage the
+changes interactively with this command.
+
+    git add -p
+
+This command shows every change hunk one by one. Enter `y` to stage a
+hunk for the next commit, `n` to ignore it, and `s` to split the hunk
+into multiple smaller hunks. Enter `?` to print help message about each
+interactive option that can be entered.
+
+
 ### Some Git Wisdom
 Enter one of the commands below in your command shell depending on your
 operating system, or just open the URL with your web browser.
@@ -728,7 +743,6 @@ operating system, or just open the URL with your web browser.
     xdg-open https://xkcd.com/1597/
     start https://xkcd.com/1597/
 
-<!-- :: \pagebreak -->
 
 License
 -------
