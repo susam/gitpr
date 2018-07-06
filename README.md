@@ -698,6 +698,21 @@ output.
     git brr
 
 
+### More Aliases
+Here are a few more commands to define aliases for very frequently used
+commands.
+
+    # Define aliases.
+    git config --global alias.co "checkout"
+    git config --global alias.cob "checkout -b"
+    git config --global alias.ca "commit --amend"
+
+    # Use aliases.
+    git co
+    git cob
+    git ca
+
+
 ### Find Merge Base
 Find a common ancestor of two branches with this command. It helps to
 find the commit after which two branches began diverging.
