@@ -37,7 +37,7 @@ Contents
   * [Keep Your Fork Updated](#keep-your-fork-updated)
   * [Amend Last Commit](#amend-last-commit)
   * [Rebase Commits](#rebase-commits)
-  * [Squash Commits](#squash-commits)
+  * [Squash/Amend Commits](#squash-amend-commits)
   * [Force Push](#force-push)
   * [Delete Branch](#delete-branch)
 * [Merge Pull Request](#merge-pull-request)
@@ -143,7 +143,7 @@ reference.
     git checkout TOPIC-BRANCH
     git rebase master
 
-    # Squash commits, e.g., last 3 commits in topic branch (optional).
+    # Squash/amend commits, e.g., last 3 commits in topic branch (optional).
     git checkout TOPIC-BRANCH
     git rebase -i HEAD~3
 
@@ -381,19 +381,24 @@ It may be a good idea to move the commits in the topic branch and place
 them on top of the main development branch, so that the topic branch
 extends linearly from the last commit in the main development branch.
 
-                  E'---F'---G' (TOPIC-BRANCH)
+                  E'--F'--G' (TOPIC-BRANCH)
                  /
     A---B---C---D  (master)
 
-The following command shows how to rebase the topic branch on the main
+The following commands show how to rebase the topic branch on the main
 development branch.
 
     git checkout TOPIC-BRANCH
     git rebase master
 
 
-### Squash Commits
-This is an optional step to keep the commit history concise.
+### Squash/Amend Commits
+This is an optional step to keep the commit history clean and concise.
+
+A pull request may contain multiple commits. Sometimes one may need to
+amend a commit that is not the last commit in the pull request. Commits
+prior to the last commit can be amended with the interactive rebase
+command.
 
 After developing the required feature or bug-fix in a topic branch, the
 developer or a reviewer may notice issues in the work that need to be
@@ -406,27 +411,35 @@ that feature or bug-fix.
         /
     A---B---C---D  (master)
 
-It may be a good idea to squash such multiple commits in the topic
-branch into a single coherent commit with all changes for the feature or
-bug-fix being developed.
+In such cases, it may be a good idea to squash multiple commits in the
+topic branch into a single coherent commit with all changes for the
+feature or bug-fix being developed.
 
-         E'       (TOPIC-BRANCH)
+         E'         (TOPIC-BRANCH)
         /
-    A---B---C---D (master)
+    A---B---C---D   (master)
 
-The following example shows how to squash the last 3 commits into a
-single commit and publish the squashed commit to the pull request.
+The following example shows how to amend the last 3 commits.
 
     git checkout TOPIC-BRANCH
     git rebase -i HEAD~3
 
-This brings up an editor with the last 3 commits ordered from earliest
-to last. Leave the first commit untouched. Replace `pick` with `squash`
-in the next two lines, save, and quit the editor.
+This brings up an editor with three lines for the last 3 commits ordered
+from earliest to last followed by instructions on how to edit these
+lines to amend the commits.
 
-This brings up an editor again. Clean up the commit message, save, and
-quit the editor.
+For example, to squash all three commits into one, leave the first
+commit untouched, replace `pick` with `squash` in the next two lines,
+save, and quit the editor. This brings up the editor again. Clean up the
+commit message, save, and quit the editor.
 
+Apart from `pick` and `squash`, there are other operations such as
+`reword`, `edit`, etc. to amend commits in other ways. Follow the
+instructions that appear in the editor to use them. When a rebase
+operation involves multiple steps, Git walks you through each step by
+offering suggestions and commands that you need to use in each step.
+
+<!-- :: \pagebreak -->
 
 ### Force Push
 The steps in the last three sections overwrite the history of the
