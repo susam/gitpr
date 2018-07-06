@@ -174,9 +174,9 @@ reference.
     # If the above command creates a new merge commit, then choose one
     # of the following three options to get rid of it:
     #
-    #   - Delete the temporary branch. Then request the contributor to
-    #     rebase the topic branch on the main development branch. After
-    #     the contributor has rebased the topic branch, start over.
+    #   - Request the contributor to rebase the topic branch on the main
+    #     development branch. After the contributor has done so, delete
+    #     the temporary branch, start over, and pull the changes again.
     #     (Commands: git checkout master; git branch -D pr)
     #
     #   - Go to the pull request page on GitHub, click on the dropdown
@@ -507,44 +507,61 @@ Create a temporary branch (`pr` for example) to pull the contribution
     git checkout -b pr
     git pull https://GITHUB/CONTRIBUTOR/REPO.git TOPIC-BRANCH
 
+If the contributor adds new commits to the pull request later, then run
+these commands again to pull the new commits.
+
 If the main development branch has diverged from the branch in the pull
 request, the above command creates a new merge commit to merge the pull
 request into the temporary branch. There are three possible options to
 get rid of this additional merge commit:
 
-  - Delete the temporary branch.
+  - Request the contributor to rebase the topic branch on the main
+    development branch. See the *[Rebase Commits](#rebase-commits)*
+    section for more details. After the contributor has rebased the
+    topic branch on the main development branch, delete the temporary
+    branch.
 
         git checkout master
         git branch -D pr
 
-    Then request the contributor to rebase the topic branch on the main
-    development branch. See the *[Rebase Commits](#rebase-commits)*
-    section for more details. After the contributor has rebased the
-    topic branch on the main development branch, start over.
+    Then start over and pull the pull request again. In fact, if at any
+    time the contributor rebases the pull request, or squashes/amends
+    commits in the pull request, delete the temporary branch and start
+    over, and pull the pull request again.
 
   - Go to the pull request page on GitHub, click on the dropdown menu
     next to the *Merge pull request* button, select *Rebase and merge*,
     and click *Rebase and merge*.
 
+    Caveat: The rebase operation rewrites the commit history of the pull
+    request submitted by the contributor. As a result, it modifies the
+    commit hash, committer, and commit date of each change in the pull
+    request. The committer and commit date fields are separate from the
+    author and author date fields. Use `git log --format=fuller` to see
+    all four fields.
+
+    This caveat is usually not a major problem because the author and
+    author date still remain intact. Further since the rebase and merge
+    is done via GitHub, it closes the pull request successfully and sets
+    its status to *Merged*.
+
+    However if you are not comfortable with the committer details
+    changing, then do not choose this option and choose the previous
+    option instead.
+
   - Rebase the pull request on the main development branch as explained
-    in the *[Rebase Commits](#rebase-commits)* section above.
+    in the *[Rebase Commits](#rebase-commits)* section.
 
-    This is the least preferred option due to a caveat. The rebase
-    operation rewrites the commit history of changes in the pull
-    request. As a result, it modifies the commit hashes of the changes
-    in the pull request.
+    Caveat: In addition to the caveat mentioned in the previous point,
+    in this case, GitHub remains oblivious of the changed commit hashes
+    because the rebase operation is done locally, not via GitHub.
+    Therefore after the merged pull request is pushed to the upstream
+    repository, GitHub does not close the pull request.
 
-    Due to this caveat, when the merged pull request is pushed to the
-    upstream repository, GitHub does not close the pull request
-    automatically. It has to be closed manually. The status of the pull
-    request would appear as *Closed* on GitHub. It would not appear as
-    *Merged*. GitHub considers a pull request to be merged if and only
-    if the commits with commit hashes *it* found in the pull request are
-    merged into the base branch.
-
-Request the contributor to squash multiple commits in the pull request
-into fewer commits (if desired). See the *[Squash
-Commits](#squash-commits)* section above for more details.
+    The pull request on GitHub can then be closed manually but its
+    status would appear as *Merged*. It would appear as *Closed*
+    instead. This can be confusing and misleading. Therefore this option
+    is not recommended. Choose one of the previous two options instead.
 
 After sufficient testing, merge the commits in the pull request into the
 main development branch and remove the pull request branch.
