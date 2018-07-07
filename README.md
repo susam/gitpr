@@ -44,6 +44,13 @@ Contents
   * [Without Merge Commit](#without-merge-commit)
   * [With Merge Commit](#with-merge-commit)
 * [Nifty Commands](#nifty-commands)
+  * [Pretty Log](#pretty-log)
+  * [Staged Diff](#staged-diff)
+  * [Branch Listing](#branch-listing)
+  * [More Aliases](#more-aliases)
+  * [Merge Base](#merge-base)
+  * [Commit Partial Changes](#commit-partial-changes)
+  * [Some Git Wisdom](#some-git-wisdom)
 * [License](#license)
 * [Support](#support)
 
@@ -646,7 +653,7 @@ This is a bonus section that describes a few aliases and commands that
 may be useful during day-to-day development activities.
 
 
-### Pretty Logs
+### Pretty Log
 The following commands create aliases to run `git log` with various subsets of
 {`--pretty`, `--graph`, `--all`} options to display commit logs in a compact
 form, i.e., one line per log.
@@ -668,7 +675,7 @@ form, i.e., one line per log.
     git lf
 
 
-### Staged Changes
+### Staged Diff
 While `git diff` shows the unstaged changes in the working directory, it
 is necessary to use the `--cached` option with `git diff` to see the
 changes staged for the next commit. The following commands create
@@ -713,14 +720,14 @@ commands.
     git ca
 
 
-### Find Merge Base
+### Merge Base
 Find a common ancestor of two branches with this command. It helps to
 find the commit after which two branches began diverging.
 
     git merge-base upstream/master TOPIC-BRANCH
 
 
-### Add Changes Interactively
+### Commit Partial Changes
 Sometimes when you are in the zone, you may make large sweeping changes
 to a file. However it is a good practice to create separate and small
 commits for separate concerns. To select some changes in a file while
