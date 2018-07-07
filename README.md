@@ -171,8 +171,11 @@ reference.
     git checkout -b pr
     git pull https://GITHUB/CONTRIBUTOR/REPO.git TOPIC-BRANCH
 
-    # If the above command creates a new merge commit, then choose one
-    # of the following three options to get rid of it:
+    # If the above command does not create a new merge commit, ignore
+    # this comment and follow the remaining commands after this comment.
+    #
+    # If the above command creates a new merge commit, choose exactly
+    # one of the following three options to get rid of it:
     #
     #   - Request the contributor to rebase the topic branch on the main
     #     development branch. After the contributor has done so, delete
@@ -184,11 +187,8 @@ reference.
     #     and click 'Rebase and merge'.
     #
     #   - Rebase the topic branch on the main development branch. Then
-    #     proceed with the commands below. Finally close the pull
-    #     request on GitHub manually. (Command: git rebase master)
-    #
-    # If the above command does not create a new merge commit, proceed
-    # with the commands below.
+    #     follow the commands below. Finally close the pull request on
+    #     GitHub manually. (Command: git rebase master)
 
     # Merge pull request and delete temporary branch.
     git checkout master
@@ -251,7 +251,7 @@ the remote named `origin` points to your fork.
 
 
 ### Work on Pull Request
-Work on a new pull request in a new topic branch and commit to your
+Work on a new pull request in a new topic branch and commit it to your
 fork. Remember to use a meaningful name instead of `TOPIC-BRANCH` in the
 commands below.
 
@@ -651,7 +651,7 @@ The following commands create aliases to run `git log` with various subsets of
 {`--pretty`, `--graph`, `--all`} options to display commit logs in a compact
 form, i.e., one line per log.
 
-    # Define
+    # Define aliases.
     FORMAT="%C(auto)%h %C(magenta)%ad %C(cyan)%an%C(auto)%d %s"
     PRETTY="--pretty=format:'$FORMAT' --date=short"
     git config --global alias.lga "log --graph --all $PRETTY"
@@ -660,7 +660,7 @@ form, i.e., one line per log.
     git config --global alias.ll "log $PRETTY"
     git config --global alias.lf "log --pretty=fuller --stat"
 
-    # Use aliases
+    # Use aliases.
     git lga
     git lg
     git la
@@ -674,11 +674,11 @@ is necessary to use the `--cached` option with `git diff` to see the
 changes staged for the next commit. The following commands create
 convenient aliases for this option.
 
-    # Define aliases
+    # Define aliases.
     git config --global alias.diffc "diff --cached"
     git config --global alias.dc "diff --cached"
 
-    # Use aliases
+    # Use aliases.
     git diffc
     git dc
 
@@ -689,11 +689,11 @@ The following commands provides aliases to list branches with verbose
 information. The second alias includes remote branches too in the
 output.
 
-    # Define aliases
+    # Define aliases.
     git config --global alias.br "branch -vv"
     git config --global alias.brr "branch -vva"
 
-    # Use aliases
+    # Use aliases.
     git br
     git brr
 
