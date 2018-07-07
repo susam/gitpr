@@ -37,7 +37,7 @@ Contents
   * [Keep Your Fork Updated](#keep-your-fork-updated)
   * [Amend Last Commit](#amend-last-commit)
   * [Rebase Commits](#rebase-commits)
-  * [Squash/Amend Commits](#squash-amend-commits)
+  * [Edit Commits](#edit-commits)
   * [Force Push](#force-push)
   * [Delete Branch](#delete-branch)
 * [Merge Pull Request](#merge-pull-request)
@@ -143,11 +143,11 @@ reference.
     git checkout TOPIC-BRANCH
     git rebase master
 
-    # Squash/amend commits, e.g., last 3 commits in topic branch (optional).
+    # Edit commits, e.g., last 3 commits in topic branch (optional).
     git checkout TOPIC-BRANCH
     git rebase -i HEAD~3
 
-    # Force push (optional).
+    # Force push rebased/edited commits to the pull request (optional).
     git push -f origin TOPIC-BRANCH
 
     # Delete topic branch branch after pull request is merged.
@@ -270,10 +270,10 @@ Create pull request via GitHub web interface as per the following steps:
 Wait for an upstream developer to review and merge your pull request.
 
 If there are review comments to be addressed, continue working on your
-branch, commiting, optionally amending, rebasing, and squashing them,
-and pushing them to the topic branch of `origin` (your fork). Any
-changes to the topic branch automatically become available in the pull
-request.
+branch, commiting, optionally rebasing, amending, squashing, and
+dropping them, and pushing them to the topic branch of `origin` (your
+fork). Any changes to the topic branch automatically become available in
+the pull request.
 
 In the fork and pull request workflow, a contributor should never commit
 anything to the main development branch of personal fork. This makes it
@@ -340,7 +340,7 @@ commit message needs to updated.
 
 Git allows us to pick the last commit, modify the changes made in that
 commit including the commit message, and reapply the changes along with
-modifications as a new commit that replaces the last commit.
+the modifications as a new commit that replaces the last commit.
 
          E---F---G' (TOPIC-BRANCH)
         /
@@ -388,7 +388,7 @@ development branch.
     git rebase master
 
 
-### Squash/Amend Commits
+### Edit Commits
 This is an optional step to keep the commit history clean and concise.
 
 A pull request may contain multiple commits. Sometimes one may need to
@@ -411,9 +411,9 @@ In such cases, it may be a good idea to squash multiple commits in the
 topic branch into a single coherent commit with all changes for the
 feature or bug-fix being developed.
 
-         E'         (TOPIC-BRANCH)
+         E'        (TOPIC-BRANCH)
         /
-    A---B---C---D   (master)
+    A---B---C---D  (master)
 
 The following example shows how to amend the last 3 commits.
 
@@ -430,7 +430,7 @@ save, and quit the editor. This brings up the editor again. Clean up the
 commit message, save, and quit the editor.
 
 Apart from `pick` and `squash`, there are other operations such as
-`reword`, `edit`, etc. to amend commits in other ways. Follow the
+`reword`, `edit`, `drop`, etc. to amend or drop commits. Follow the
 instructions that appear in the editor to use them. When a rebase
 operation involves multiple steps, Git walks you through each step by
 offering suggestions and commands that you need to use in each step.
@@ -520,9 +520,9 @@ get rid of this additional merge commit:
         git branch -D pr
 
     Then start over and pull the pull request again. In fact, if at any
-    time the contributor rebases the pull request, or squashes/amends
-    commits in the pull request, delete the temporary branch and start
-    over, and pull the pull request again.
+    time the contributor rebases the pull request, or edits, squashes,
+    amends, or drops commits in the pull request, delete the temporary
+    branch and start over, and pull the pull request again.
 
   - Go to the pull request page on GitHub, click on the dropdown menu
     next to the *Merge pull request* button, select *Rebase and merge*,
