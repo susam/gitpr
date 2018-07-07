@@ -11,7 +11,7 @@ Fork and Pull Request Workflow
 [DOWNLOAD_PDF]: https://github.com/susam/gitpr/releases/download/0.2.0/gitpr.pdf
 [DOWNLOAD_TXT]: https://github.com/susam/gitpr/releases/download/0.2.0/gitpr.txt
 <!-- :: \fi -->
-<!-- Version 0.3.0-dev (2018-07-06) -->
+<!-- Version 0.3.0-dev (2018-07-07) -->
 <!-- :: \maketitle -->
 
 This document describes how developers may contribute pull requests to
@@ -23,7 +23,7 @@ The download buttons above download version 0.2.0 <!-- x -->
 (the latest stable release) of this document. <!-- x -->
 <!-- x -->
 The most recent version of this document is available at
-<https://github.com/susam/gitpr>.
+[git.io/gitpr](https://git.io/gitpr).
 
 <!-- :: \iffalse -->
 
