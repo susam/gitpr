@@ -8,10 +8,10 @@ Fork and Pull Request Workflow
 [SHIELD_PDF]: https://img.shields.io/badge/download-PDF-brightgreen.svg
 [SHIELD_TXT]: https://img.shields.io/badge/download-TXT-brightgreen.svg
 [SHIELD_CCBY]: https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg
-[DOWNLOAD_PDF]: https://github.com/susam/gitpr/releases/download/0.2.0/gitpr.pdf
-[DOWNLOAD_TXT]: https://github.com/susam/gitpr/releases/download/0.2.0/gitpr.txt
+[DOWNLOAD_PDF]: https://github.com/susam/gitpr/releases/download/0.3.0/gitpr.pdf
+[DOWNLOAD_TXT]: https://github.com/susam/gitpr/releases/download/0.3.0/gitpr.txt
 <!-- :: \fi -->
-<!-- Version 0.3.0-dev (2018-07-07) -->
+<!-- Version 0.3.0 (2018-07-07) -->
 <!-- :: \maketitle -->
 
 This document describes how developers may contribute pull requests to
@@ -19,7 +19,7 @@ an upstream repository and how upstream owners may merge pull requests
 from contributors according to the very popular fork and pull request
 workflow followed in many projects on GitHub.
 
-The download buttons above download version 0.2.0 <!-- x -->
+The download buttons above download version 0.3.0 <!-- x -->
 (the latest stable release) of this document. <!-- x -->
 <!-- x -->
 The most recent version of this document is available at
