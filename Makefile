@@ -59,7 +59,7 @@ clean:
 	rm -rf out
 	rm -f *.aux *.log *.out *.toc
 
-view:
+view: build
 	-xdg-open out/gitpr.pdf || open out/gitpr.pdf
 	-less out/gitpr.txt
 

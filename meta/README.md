@@ -29,11 +29,13 @@ Release
 Perform the following tasks for every release.
 
   - Update version line in README.md.
+  - Update version in the note about download buttons.
   - Update version in download URLs.
   - Update copyright notice in README.md.
-  - Build output documents.
+  - Update CHANGES.md.
+  - Build output documents and view them.
 
-        make
+        make view
 
   - Ensure that `out/gitpr.pdf` and `out/gitpr.txt` look good.
   - Tag the release.
