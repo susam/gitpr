@@ -137,9 +137,8 @@ reference.
     # click *Compare & pull request*.
 
     # Keep your fork's main development branch updated with upstream's.
-    git fetch upstream
     git checkout master
-    git merge upstream/master
+    git pull upstream master
     git push origin master
 
     # Amend last commit (optional).
@@ -298,9 +297,8 @@ it.
 The commands below show how to update your fork's main development
 branch with the new commits in the upstream's main development branch.
 
-    git fetch upstream
     git checkout master
-    git merge upstream/master
+    git pull upstream master
     git push origin master
 
 The `git merge` command above simply fast-forwards the main development
