@@ -40,7 +40,8 @@ Perform the following tasks for every release.
   - Ensure that `out/gitpr.pdf` and `out/gitpr.txt` look good.
   - Tag the release.
 
-        git tag -a <VERSION> -m "Version <VERSION>"
+        git tag <VERSION> -m "Version <VERSION>"
+        git push
         git push origin <VERSION>
 
   - Upload `out/gitpr.pdf` and `out/gitpr.txt` to GitHub release page.
