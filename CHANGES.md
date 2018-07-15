@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.4.0 (2018-07-15)
+------------------
+### Changed
+- Use `git pull` to keep the fork's main development branch updated with
+  changes in the upstream instead of `git fetch` and `git merge`.
+
+
 0.3.0 (2018-07-07)
 ------------------
 ### Added
@@ -15,8 +22,8 @@ Changelog
 ### Changed
 - Discuss editing previous comments in general with `git rebase -i`
   command rather than squashing commits in particular.
-- Include `git pull` command to update master while merging pull
-  requests in local clone of upstream repository.
+- Include `git pull` command to update the main development branch while
+  merging pull requests in local clone of upstream repository.
 - Discuss `git push -f` command in a separate section.
 
 
