@@ -559,7 +559,7 @@ get rid of this additional merge commit:
     repository, GitHub does not close the pull request.
 
     The pull request on GitHub can then be closed manually but its
-    status would appear as *Merged*. It would appear as *Closed*
+    status would not appear as *Merged*. It would appear as *Closed*
     instead. This can be confusing and misleading. Therefore this option
     is not recommended. Choose one of the previous two options instead.
 
