@@ -676,13 +676,12 @@ The following commands create aliases to run `git log` with various subsets of
 form, i.e., one line per log.
 
     # Define aliases.
-    FORMAT="%C(auto)%h %C(magenta)%ad %C(cyan)%an%C(auto)%d %s"
-    PRETTY="--pretty=format:'$FORMAT' --date=short"
-    git config --global alias.lga "log --graph --all $PRETTY"
-    git config --global alias.lg "log --graph $PRETTY"
-    git config --global alias.la "log --all $PRETTY"
-    git config --global alias.ll "log $PRETTY"
-    git config --global alias.lf "log --pretty=fuller --stat"
+    git config --global pretty.fmt '%C(auto)%h %C(magenta)%ad %C(cyan)%an%C(auto)%d %s'
+    git config --global alias.lga 'log --pretty=fmt --date=short --graph --all'
+    git config --global alias.lg  'log --pretty=fmt --date=short --graph'
+    git config --global alias.la  'log --pretty=fmt --date=short --all'
+    git config --global alias.ll  'log --pretty=fmt --date=short'
+    git config --global alias.lf  'log --pretty=fuller --stat'
 
     # Use aliases.
     git lga
