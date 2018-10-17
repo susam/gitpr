@@ -1,6 +1,17 @@
 Changelog
 =========
 
+0.5.0 (2018-10-17)
+------------------
+### Changed
+- Define `pretty.fmt` config option and use `fmt` as the format name in
+  the `git log` aliases for compact commit logs.
+
+### Fixed
+- Typo: "its status would appear as *Merged*" => "its status would
+  not appear as *Merged*".
+
+
 0.4.0 (2018-07-15)
 ------------------
 ### Changed

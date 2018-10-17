@@ -28,9 +28,7 @@ Release
 -------
 Perform the following tasks for every release.
 
-  - Update version line in README.md.
-  - Update version in the note about download buttons.
-  - Update version in download URLs.
+  - Find and replace old version with new version in README.md.
   - Update copyright notice in README.md.
   - Update CHANGES.md.
   - Build output documents and view them.
@@ -38,6 +36,11 @@ Perform the following tasks for every release.
         make view
 
   - Ensure that `out/gitpr.pdf` and `out/gitpr.txt` look good.
+  - Commit changes.
+
+        git add .
+        git commit
+
   - Tag the release.
 
         git tag <VERSION> -m "Version <VERSION>"
