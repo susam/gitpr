@@ -1,5 +1,6 @@
 Fork and Pull Request Workflow
 ==============================
+
 <!-- :: \iffalse -->
 [![Download PDF][SHIELD_PDF]][DOWNLOAD_PDF]
 [![Download TXT][SHIELD_TXT]][DOWNLOAD_TXT]
@@ -11,7 +12,7 @@ Fork and Pull Request Workflow
 [DOWNLOAD_PDF]: https://github.com/susam/gitpr/releases/download/0.4.0/gitpr.pdf
 [DOWNLOAD_TXT]: https://github.com/susam/gitpr/releases/download/0.4.0/gitpr.txt
 <!-- :: \fi -->
-<!-- Version 0.4.0 (2018-07-15) -->
+<!-- Version 0.4.0 (2018-10-17) -->
 <!-- :: \maketitle -->
 
 This document describes how developers may contribute pull requests to
@@ -29,6 +30,7 @@ The most recent version of this document is available at
 
 Contents
 --------
+
 * [Introduction](#introduction)
 * [Quick Reference](#quick-reference)
 * [Create Pull Request](#create-pull-request)
@@ -60,6 +62,7 @@ Contents
 
 Introduction
 ------------
+
 Every project has a main development branch where the developers push
 commits on a day-to-day basis. Usually, the main development branch is
 `master` but some projects choose to have `develop` or `trunk` or
@@ -113,8 +116,10 @@ pull requests.
 
 <!-- :: \pagebreak -->
 
+
 Quick Reference
 ---------------
+
 Here is a brief summary of all the commands used to create and merge
 pull requests in this document. This section serves as a quick
 reference.
@@ -236,11 +241,13 @@ commands in detail.
 
 Create Pull Request
 -------------------
+
 This section is meant for developers who contribute new commits to the
 upstream repository from their personal fork.
 
 
 ### Fork and Clone
+
 On GitHub, fork the upstream repository to your personal user account.
 
 Then clone your fork from your personal GitHub user account to your
@@ -257,6 +264,7 @@ the remote named `origin` points to your fork.
 
 
 ### Work on Pull Request
+
 Work on a new pull request in a new topic branch and commit it to your
 fork. Remember to use a meaningful name instead of `TOPIC-BRANCH` in the
 commands below.
@@ -290,6 +298,7 @@ subsection.
 <!-- :: \pagebreak -->
 
 ### Keep Your Fork Updated
+
 As new pull requests get merged into the upstream's main development
 branch, the main development branch of your fork begins falling behind
 it.
@@ -335,6 +344,7 @@ your main development branch point to the same commit.
 <!-- :: \pagebreak -->
 
 ### Amend Last Commit
+
 This is an optional step to rework on the last commit. After commiting
 some work, one may realize that some files need to be modified or the
 commit message needs to updated.
@@ -369,6 +379,7 @@ commit --amend`.
 
 
 ### Rebase Commits
+
 This is an optional step to keep the commit history as linear as possible.
 
 The main development branch may have diverged since the topic branch was
@@ -394,6 +405,7 @@ development branch.
 
 
 ### Edit Commits
+
 This is an optional step to keep the commit history clean and concise.
 
 A pull request may contain multiple commits. Sometimes one may need to
@@ -443,6 +455,7 @@ offering suggestions and commands that you need to use in each step.
 <!-- :: \pagebreak -->
 
 ### Force Push
+
 The steps in the last three sections overwrite the history of the
 branch. If these steps are performed after the pull request branch has
 already been pushed to GitHub, then it is necessary to use the `-f` or
@@ -460,6 +473,7 @@ upstream repository.
 
 
 ### Delete Branch
+
 Once the upstream developer merges your pull request, you may delete the
 topic branch from your local system as well as from your fork.
 
@@ -475,6 +489,7 @@ repository.
 
 Merge Pull Request
 ------------------
+
 This section is meant for lead developers who own the upstream
 repository and merge pull requests from contributors to it.
 
@@ -489,6 +504,7 @@ commit history.
 
 
 ### Without Merge Commit
+
 Clone the upstream repository to your local system.
 
     git clone https://GITHUB/UPSTREAM-OWNER/REPO.git
@@ -602,6 +618,7 @@ commit in the pull request branch.
 <!-- :: \pagebreak -->
 
 ### With Merge Commit
+
 Clone the upstream repository to your local system.
 
     git clone https://GITHUB/UPSTREAM-OWNER/REPO.git
@@ -647,11 +664,13 @@ merge is possible.
 
 Nifty Commands
 --------------
+
 This is a bonus section that describes a few aliases and commands that
 may be useful during day-to-day development activities.
 
 
 ### Pretty Log
+
 The following commands create aliases to run `git log` with various subsets of
 {`--pretty`, `--graph`, `--all`} options to display commit logs in a compact
 form, i.e., one line per log.
@@ -674,6 +693,7 @@ form, i.e., one line per log.
 
 
 ### Staged Diff
+
 While `git diff` shows the unstaged changes in the working directory, it
 is necessary to use the `--cached` option with `git diff` to see the
 changes staged for the next commit. The following commands create
@@ -690,6 +710,7 @@ convenient aliases for this option.
 <!-- :: \pagebreak -->
 
 ### Branch Listing
+
 The following commands provides aliases to list branches with verbose
 information. The second alias includes remote branches too in the
 output.
@@ -704,6 +725,7 @@ output.
 
 
 ### More Aliases
+
 Here are a few more commands to define aliases for very frequently used
 commands.
 
@@ -719,6 +741,7 @@ commands.
 
 
 ### Merge Base
+
 Find a common ancestor of two branches with this command. It helps to
 find the commit after which two branches began diverging.
 
@@ -726,6 +749,7 @@ find the commit after which two branches began diverging.
 
 
 ### Commit Partial Changes
+
 Sometimes when you are in the zone, you may make large sweeping changes
 to a file. However it is a good practice to create separate and small
 commits for separate concerns. To select some changes in a file while
@@ -741,6 +765,7 @@ interactive option that can be entered.
 
 
 ### Some Git Wisdom
+
 Enter one of the commands below in your command shell depending on your
 operating system, or just open the URL with your web browser.
 
@@ -751,6 +776,7 @@ operating system, or just open the URL with your web browser.
 
 License
 -------
+
 Copyright &copy; 2018 Susam Pal
 
 [![CC BY 4.0 Logo](meta/ccby.svg "CC BY 4.0")][CCBY]
@@ -773,6 +799,7 @@ express, implied, statutory, or other. See the
 
 Support
 -------
+
 To report bugs, suggest improvements, or ask questions,
 [create issues][ISSUES].
 
