@@ -310,7 +310,7 @@ branch with the new commits in the upstream's main development branch.
     git pull upstream master
     git push origin master
 
-The `git merge` command above simply fast-forwards the main development
+The `git pull` command above simply fast-forwards the main development
 branch from an earlier commit to the last commit in the upstream's main
 development branch.
 
