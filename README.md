@@ -12,7 +12,7 @@ Fork and Pull Request Workflow
 [DOWNLOAD_PDF]: https://github.com/susam/gitpr/releases/download/0.5.0/gitpr.pdf
 [DOWNLOAD_TXT]: https://github.com/susam/gitpr/releases/download/0.5.0/gitpr.txt
 <!-- :: \fi -->
-<!-- Version 0.5.0 (2018-10-17) -->
+<!-- Version 0.5.0 (2018-11-19) -->
 <!-- :: \maketitle -->
 
 This document describes how developers may contribute pull requests to
@@ -185,8 +185,9 @@ reference.
     # If the above command does not create a new merge commit, ignore
     # this comment and follow the remaining commands after this comment.
     #
-    # If the above command creates a new merge commit, choose exactly
-    # one of the following three options to get rid of it:
+    # If the above command creates a new merge commit, first consider
+    # that it is okay to have a merge commit. However, if you want to
+    # get rid of it, choose exactly one of the following three options:
     #
     #   - Request the contributor to rebase the topic branch on the main
     #     development branch. After the contributor has done so, delete
@@ -523,13 +524,17 @@ Create a temporary branch (`pr` for example) to pull the contribution
     git checkout -b pr
     git pull https://GITHUB/CONTRIBUTOR/REPO.git TOPIC-BRANCH
 
-If the contributor adds new commits to the pull request later, then run
-these commands again to pull the new commits.
-
 If the main development branch has diverged from the branch in the pull
 request, the above command creates a new merge commit to merge the pull
-request into the temporary branch. There are three possible options to
-get rid of this additional merge commit:
+request into the temporary branch.
+
+Note: It is okay to have a merge commit while merging pull requests.
+There is nothing wrong about it. If you are comfortable having a merge
+commit for the pull request, skip the list of three points below and
+continue with merging the pull request.
+
+If you really want to get rid of the additional merge commit, follow
+exactly one of these options:
 
   - Request the contributor to rebase the topic branch on the main
     development branch. See the *[Rebase Commits](#rebase-commits)*
