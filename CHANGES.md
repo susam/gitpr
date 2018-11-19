@@ -1,6 +1,16 @@
 Changelog
 =========
 
+0.6.0 (2018-11-19)
+------------------
+### Changed
+- Explain that it is okay to have a merge commit for pull requests.
+
+### Fixed
+- Describe `git pull` instead of `git merge` in the "Keep Your Fork
+  Updated" section.
+
+
 0.5.0 (2018-10-17)
 ------------------
 ### Changed
