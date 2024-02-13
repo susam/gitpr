@@ -1,6 +1,21 @@
 Fork and Pull Request Workflow
 ==============================
 
+aws_envs file should contain AWS variables ---
+execution:
+- concurrency: 10
+  ramp-up: 1m
+  hold-for: 1m30s
+  scenario: simple
+  
+scenarios:
+  simple:
+    think-time: 0.75
+    requests:
+    - http://blazedemo.com/
+    - http://blazedemo.com/vacation.htmlneeded for authorization (without quotes)
+AWS_ACCESS_KEY_ID=abc
+AWS_SECRET_ACCESS_KEY=efg
 <!-- :: \iffalse -->
 [![Download PDF][SHIELD_PDF]][DOWNLOAD_PDF]
 [![Download TXT][SHIELD_TXT]][DOWNLOAD_TXT]
